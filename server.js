@@ -9,12 +9,12 @@ const morgan = require("morgan")
 
 // Connection Tracker for Mongoose
 
-mongoose.connect(DATABASE_URL)
+// mongoose.connect(DATABASE_URL)
 
-mongoose.connection
-.on("open", () => console.log("Mongo connected"))
-.on("close", () => console.log("Mongo disconnected"))
-.on("error", () => console.log(error))
+// mongoose.connection
+// .on("open", () => console.log("Mongo connected"))
+// .on("close", () => console.log("Mongo disconnected"))
+// .on("error", () => console.log(error))
 
 // Middleware
 
