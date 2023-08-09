@@ -26,12 +26,22 @@ app.use(express.json())
 
 // ROUTES
 
-// index
+// INDEX - GET
 app.get('/bookmarks', async(req, res) => {
     try {
         const bookmarks = await Bookmarks.find({});
         res.json(bookmarks);
     } catch (error) {
+        res.status(400).json({error});
+    }
+});
+
+// CREATE - POST
+app.post('/bookmarks', async(req, res) => {
+    try {
+        const bookmark = await Bookmarks.create(req.body);
+        res.json(bookmark);
+    }catch (error) {
         res.status(400).json({error});
     }
 });
