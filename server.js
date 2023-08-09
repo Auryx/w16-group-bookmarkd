@@ -24,6 +24,7 @@ app.use(express.json())
 
 /////////////////////////////////////////
 // Model
+
 const bookmarkSchema = new mongoose.Schema({
   name: String,
   url: String,
