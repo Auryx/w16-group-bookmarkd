@@ -57,10 +57,20 @@ app.get('/bookmarks/:id', async (req, res) => {
 });
 
 // UPDATE - PUT
-app.put('/bookmark/:id', async (req, res) => {
+app.put('/bookmarks/:id', async (req, res) => {
     try {
         const bookmark = await Bookmarks.findByIdAndUpdate(req.params.id, req.body, {new: true});
         res.json(bookmark);
+    } catch (error) {
+        res.status(400).json({error});
+    }
+});
+
+// DESTROY - DELETE
+app.delete('/bookmarks/:id', async (req, res) => {
+    try {
+        const bookmark = await Bookmarks.findByIdAndDelete(req.params.id);
+        res.status(204).json(bookmark)
     } catch (error) {
         res.status(400).json({error});
     }
