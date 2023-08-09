@@ -24,12 +24,12 @@ app.use(express.json())
 
 /////////////////////////////////////////
 // Model
-const BookmarkSchema = new mongoose.Schema({
+const bookmarkSchema = new mongoose.Schema({
   name: String,
   url: String,
 });
 
-const Bookmark = mongoose.model("Bookmark", BookmarkSchema);
+const Bookmarks = mongoose.model("Bookmark", bookmarkSchema);
 
 // ROUTES
 
