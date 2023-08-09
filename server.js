@@ -57,7 +57,7 @@ app.post('/bookmarks', async (req, res) => {
 // SHOW - GET 
 app.get('/bookmarks/:id', async (req, res) => {
     try {
-        const book = await Bookmar.findById(req.params.id);
+        const book = await Bookmarks.findById(req.params.id);
         res.json(person);
     } catch (error) {
         res.status(400).json({error});
