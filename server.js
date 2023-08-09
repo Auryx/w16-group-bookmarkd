@@ -56,6 +56,16 @@ app.get('/bookmarks/:id', async (req, res) => {
     }
 });
 
+// UPDATE - PUT
+app.put('/bookmark/:id', async (req, res) => {
+    try {
+        const bookmark = await Bookmarks.findByIdAndUpdate(req.params.id, req.body, {new: true});
+        res.json(bookmark);
+    } catch (error) {
+        res.status(400).json({error});
+    }
+});
+
 app.get("/", (req, res) => {
     res.json({hello: "world"})
 });
