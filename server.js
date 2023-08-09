@@ -14,7 +14,7 @@ mongoose.connect(DATABASE_URL)
 mongoose.connection
 .on("open", () => console.log("Mongo connected"))
 .on("close", () => console.log("Mongo disconnected"))
-.on("error", () => console.log(error))
+.on("error", (error) => console.log(error))
 
 // Middleware
 
@@ -24,6 +24,7 @@ app.use(express.json())
 
 /////////////////////////////////////////
 // Model
+
 const bookmarkSchema = new mongoose.Schema({
   name: String,
   url: String,
