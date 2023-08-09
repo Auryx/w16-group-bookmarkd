@@ -23,27 +23,34 @@ app.use(morgan("dev"))
 app.use(express.json())
 
 /////////////////////////////////////////
+// Model
+const BookmarkSchema = new mongoose.Schema({
+  name: String,
+  url: String,
+});
+
+const Bookmark = mongoose.model("Bookmark", BookmarkSchema);
 
 // ROUTES
 
 // INDEX - GET
-app.get('/bookmarks', async(req, res) => {
-    try {
-        const bookmarks = await Bookmarks.find({});
-        res.json(bookmarks);
-    } catch (error) {
-        res.status(400).json({error});
-    }
+app.get('/bookmarks', async (req, res) => {
+  try {
+    const bookmarks = await Bookmarks.find({});
+    res.json(bookmarks);
+  } catch (error) {
+    res.status(400).json({ error });
+  }
 });
 
 // CREATE - POST
-app.post('/bookmarks', async(req, res) => {
-    try {
-        const bookmark = await Bookmarks.create(req.body);
-        res.json(bookmark);
-    }catch (error) {
-        res.status(400).json({error});
-    }
+app.post('/bookmarks', async (req, res) => {
+  try {
+    const bookmark = await Bookmarks.create(req.body);
+    res.json(bookmark);
+  } catch (error) {
+    res.status(400).json({ error });
+  }
 });
 
 // SHOW - GET 
@@ -79,6 +86,7 @@ app.delete('/bookmarks/:id', async (req, res) => {
 app.get("/", (req, res) => {
     res.json({hello: "world"})
 });
+
 
 
 ///////////////////////////////////////////////////
